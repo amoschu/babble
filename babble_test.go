@@ -1,7 +1,7 @@
 package babble_test
 
 import (
-	. "babble"
+	. "github.com/amoschu/babble"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -10,8 +10,8 @@ var _ = Describe("babble", func() {
 	var babbler Babbler
 	BeforeEach(func() {
 		babbler = Babbler{
-			Count: 1,
-			Words: []string{"hello"},
+			Count:     1,
+			Words:     []string{"hello"},
 			Separator: "☃",
 		}
 	})

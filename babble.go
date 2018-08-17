@@ -11,11 +11,12 @@ func init() {
 }
 
 type Babbler struct {
-	Count int
+	Count     int
 	Separator string
-	Words []string
+	Words     []string
 }
 
+// NewBabbler initializes a new Babbler instance.
 func NewBabbler() (b Babbler) {
 	b.Count = 2
 	b.Separator = "-"
@@ -23,9 +24,10 @@ func NewBabbler() (b Babbler) {
 	return
 }
 
+// Babble returns a random dictionary word.
 func (this Babbler) Babble() string {
 	pieces := []string{}
-	for i := 0; i < this.Count ; i++ {
+	for i := 0; i < this.Count; i++ {
 		pieces = append(pieces, this.Words[rand.Int()%len(this.Words)])
 	}
 
