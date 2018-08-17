@@ -26,7 +26,7 @@ func NewBabbler() (b Babbler) {
 
 // Babble returns a random dictionary word.
 func (this Babbler) Babble(c int) string {
-	if c <= 0 {
+	if c <= 0 || len(this.Words) == 0 {
 		return ""
 	}
 	pieces := make([]string, c)
