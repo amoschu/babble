@@ -4,6 +4,7 @@ import (
 	"math/rand"
 	"strings"
 	"time"
+	"unicode"
 )
 
 func init() {
@@ -11,24 +12,32 @@ func init() {
 }
 
 type Babbler struct {
-	Count     int
-	Separator string
-	Words     []string
+	Separator  string   // Babble() word separator
+	Words      []string // List of possible words (set by NewBabbler())
 }
 
 // NewBabbler initializes a new Babbler instance.
 func NewBabbler() (b Babbler) {
-	b.Count = 2
 	b.Separator = "-"
 	b.Words = readAvailableDictionary()
 	return
 }
 
 // Babble returns a random dictionary word.
-func (this Babbler) Babble() string {
-	pieces := []string{}
-	for i := 0; i < this.Count; i++ {
-		pieces = append(pieces, this.Words[rand.Int()%len(this.Words)])
+func (this Babbler) Babble(c int) string {
+	if c <= 0 {
+		return ""
+	}
+	pieces := make([]string, c)
+	for i := 0; i < c; i++ {
+		word := this.Words[rand.Int()%len(this.Words)]
+		word = strings.Map(func(r rune) rune {
+			if unicode.IsPunct(r) {
+				return -1
+			}
+			return r
+		}, word)
+		pieces[i] = word
 	}
 
 	return strings.Join(pieces, this.Separator)

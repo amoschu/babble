@@ -24,10 +24,9 @@ func main() {
 
 	flag.Parse()
 	babbler := NewBabbler()
-	babbler.Count = numberOfWords
 	babbler.Separator = separator
 
-	println(babbler.Babble())
+	println(babbler.Babble(numberOfWords))
 	return
 }
 

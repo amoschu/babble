@@ -10,20 +10,20 @@ var _ = Describe("babble", func() {
 	var babbler Babbler
 	BeforeEach(func() {
 		babbler = Babbler{
-			Count:     1,
-			Words:     []string{"hello"},
+			Words:     []string{"hello's"},
 			Separator: "☃",
 		}
 	})
 
 	It("returns a random word", func() {
-		Expect(babbler.Babble()).To(Equal("hello"))
+		Expect(babbler.Babble(1)).To(Equal("hellos"))
 	})
 
-	Describe("with multiple words", func() {
-		It("concatenates strings", func() {
-			babbler.Count = 2
-			Expect(babbler.Babble()).To(Equal("hello☃hello"))
-		})
+	It("concatenates strings", func() {
+		Expect(babbler.Babble(2)).To(Equal("hellos☃hellos"))
+	})
+
+	It("sanitizes punctuation", func() {
+		Expect(babbler.Babble(4)).To(Equal("hellos☃hellos☃hellos☃hellos"))
 	})
 })
