@@ -13,6 +13,7 @@ func readAvailableDictionary() (words []string) {
 	if err != nil {
 		panic(err)
 	}
+	defer file.Close()
 
 	bytes, err := ioutil.ReadAll(file)
 	if err != nil {
