@@ -23,6 +23,11 @@ var _ = Describe("babble", func() {
 		Expect(babbler.Babble(2)).To(Equal("hellos☃hellos"))
 	})
 
+	It("captilizes first letter", func() {
+		babbler.Capitalize = true
+		Expect(babbler.Babble(2)).To(Equal("Hellos☃Hellos"))
+	})
+
 	It("sanitizes punctuation", func() {
 		Expect(babbler.Babble(4)).To(Equal("hellos☃hellos☃hellos☃hellos"))
 	})

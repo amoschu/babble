@@ -14,6 +14,7 @@ func init() {
 type Babbler struct {
 	Separator  string   // Babble() word separator
 	Words      []string // List of possible words (set by NewBabbler())
+	Capitalize bool     // Whether to capitalize
 }
 
 // NewBabbler initializes a new Babbler instance.
@@ -37,6 +38,9 @@ func (this Babbler) Babble(c int) string {
 			}
 			return r
 		}, word)
+		if this.Capitalize {
+			word = strings.Title(word)
+		}
 		pieces[i] = word
 	}
 
