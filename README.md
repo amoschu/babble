@@ -1,8 +1,7 @@
 Babble
 =========
 
-# This is a fork of
-[github.com/tjarratt/babble](https://github.com/tjarratt/babble).
+# This is a fork of [github.com/tjarratt/babble](https://github.com/tjarratt/babble).
 
 Babble is a small utility that generates random words for you. I found this useful because occasionally you need a random word for testing.
 
